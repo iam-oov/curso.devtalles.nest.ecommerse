@@ -3,8 +3,19 @@
 </p>
 
 # Teslo API
+1. Instalar las dependencias
+```
+yarn
+```
 
-1. Levantar la DB
+2. Crear el arhivo ```__.env__``` apartir del archivo ```__.env.example__```
+
+3. Levantar la DB
 ```
 docker compose up --build
+```
+
+4. Levantar el modo desarrollo:
+```
+yarn start:dev
 ```
