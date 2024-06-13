@@ -1,0 +1,12 @@
+services:
+  db:
+    image: postgres:16.3
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: passworde
+      POSTGRES_DB: teslodb
+    container_name: teslo-container
+    volumes:
+      - ./postgres:/var/lib/postgresql/data

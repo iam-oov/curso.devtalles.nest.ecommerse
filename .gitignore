@@ -3,6 +3,7 @@
 
 dist/
 mongo/
+postgres/
 
 ### Node ###
 # Logs
