@@ -8,7 +8,7 @@
 yarn
 ```
 
-2. Crear el arhivo ```__.env__``` apartir del archivo ```__.env.example__```
+2. Crear el arhivo __```.env```__ apartir del archivo __```.env.example```__
 
 3. Levantar la DB
 ```
