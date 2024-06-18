@@ -25,7 +25,7 @@ export class ProductsService {
     @InjectRepository(ProductImage)
     private readonly productImageRepository: Repository<ProductImage>,
 
-    private readonly dataSource = DataSource,
+    private readonly dataSource: DataSource,
   ) {}
 
   async create(createProductDto: CreateProductDto) {
@@ -98,14 +98,29 @@ export class ProductsService {
 
     // create query runner
     const queryRunner = this.dataSource.createQueryRunner();
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
 
     try {
-      await this.productRepository.save(product);
+      if (images) {
+        // borrar todas las imagenes anteriores
+        await queryRunner.manager.delete(ProductImage, { product: { id } });
+
+        product.images = images.map((image) =>
+          this.productImageRepository.create({ url: image }),
+        );
+      }
+
+      await queryRunner.manager.save(product);
+      await queryRunner.commitTransaction();
+      await queryRunner.release();
+
+      return this.findOnePlane(id);
     } catch (error) {
+      await queryRunner.rollbackTransaction();
+      await queryRunner.release();
       this.handleDBExceptionError(error);
     }
-
-    return product;
   }
 
   async remove(id: string) {
@@ -130,6 +145,16 @@ export class ProductsService {
     } else {
       this.logger.error(error);
       throw new InternalServerErrorException('Ayuda!');
+    }
+  }
+
+  async deleteAllProducts() {
+    const query = this.productRepository.createQueryBuilder('product');
+
+    try {
+      return await query.delete().where({}).execute();
+    } catch (error) {
+      this.handleDBExceptionError(error);
     }
   }
 }
