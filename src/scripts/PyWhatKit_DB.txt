@@ -1,0 +1,25 @@
+Date: 27/6/2024
+Time: 17:5
+Phone Number: +528120276216
+Message: Msg desde Python 3.10
+--------------------
+Date: 27/6/2024
+Time: 17:5
+Phone Number: +528120276216
+Message: Msg desde Python 3.10 - 2
+--------------------
+Date: 27/6/2024
+Time: 17:6
+Phone Number: +528120276216
+Message: Msg desde Python 3.10 - 2
+--------------------
+Date: 27/6/2024
+Time: 17:8
+Group ID: Akts 07
+Message: 🤖 Msg desde Python 3.12
+--------------------
+Date: 27/6/2024
+Time: 17:9
+Group ID: Akts 07
+Message: 🤖 Msg desde Python 3.12
+--------------------
