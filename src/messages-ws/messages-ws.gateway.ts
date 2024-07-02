@@ -67,6 +67,8 @@ export class MessagesWsGateway
     //   message: payload.message || 'no-message!!'
     // });
 
+    console.log('message-from-client');
+
     this.wss.emit('message-from-server', {
       fullName: this.messagesWsService.getUserFullName(client.id),
       message: payload.message || 'no-message!!',
